@@ -1,0 +1,72 @@
+var crypt = require('crypto');
+"use strict";
+var sha1 = require('sha256');
+class Block {
+constructor(index, data, prevHash) {
+this.index = index;
+this.data = data;
+this.preHash = prevHash;
+this.timestamp = Math.floor(Date.now() / 1000);
+this.hash = this.getHash();
+}
+
+getHash() {
+return sha1(JSON.stringify(this.data) + this.preHash + this.index + this.timestamp);
+}
+
+}
+
+class BlockChain {
+constructor() {
+this.chain = [];
+}
+
+addBlock(data) {
+let index = this.chain.length;
+let prevHash = this.chain.length !== 0 ? this.chain[this.chain.length - 1].hash : 0;
+let block = new Block(index, data, prevHash);
+this.chain.push(block);
+}
+
+ChainIsValid() {
+for (var i = 0; i < this.chain.length; i++) {
+if (this.chain[i].hash !== this.chain[i].getHash())
+return false;
+
+if (i > 0 && this.chain[i].preHash !== this.chain[i - 1].hash)
+return false;
+}
+return true;
+}
+
+}
+
+const CILCoin = new BlockChain();
+CILCoin.addBlock({sender:"anj", receiver:"rohit", amount :1000});
+CILCoin.addBlock({sender:"aman", receiver:"mon", amount :2000});
+CILCoin.addBlock({sender:"reddy", receiver:"sha", amount :3000});
+console.log(JSON.stringify(CILCoin, null,4));
+
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("Reddy");
+  var myobj = { sender:"aman", receiver:"mon", amount :2000 };
+  dbo.createCollection("one");
+  dbo.collection("one").insertOne(myobj, function(err, res) {
+    if (err) throw err;
+    console.log("1 document inserted");
+    db.close();
+  });
+
+  var myobj1 = {sender:"anj", receiver:"rohit", amount :1000 };
+  dbo.createCollection("two");
+  dbo.collection("two").insertOne(myobj1, function(err, res){
+      if (err) throw err;
+      console.log("2 document inserted");
+      db.close();
+    });
+});
