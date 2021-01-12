@@ -1,14 +1,12 @@
 # Blockchain-basics
 
-# Blockchain-basics
-
 During my internship as a Software Developer, I learnt about the building blocks of Blockchain technology. Blockchain, as the name suggests, is made up of blocks containing information connected to each other forming a chain. A block is called node and each node is linked to its previous node by means of a Hash. A hash is a function that encrypts a message into a fixed length outout. This repo includes pieces of code for understanding the mechanism behind Blockchain. 
 
 1) Encryption of user details (name and password) using Cipher function
 
-Front page: HTML
+Front-end: Userdetails.html
+Back-end: final1.jsp
 Database: MySQL
-Server-side Programming: JSP
 
 
 2) Simple Blockchain 
