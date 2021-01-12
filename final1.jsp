@@ -1,4 +1,3 @@
-JSP:
 
 <%@page import="java.sql.*"%>
 <%@page import=" java.security.*"%>
@@ -85,16 +84,3 @@ catch(Exception e)
 %>
 
 
-HTML:
-
-<html>
-<body>
-<form name="userform" method="get" action="final1.jsp">
-<table>
-<tr><td>User Name</td><td><input type="text" name="name"></td></tr>
-<tr><td>Password</td><td><input type="password" name="pass"></td></tr>
-<tr><td><input type="submit" value="Encrypt"></td></tr>
-</table>
-</form>
-</body>
-</html>
