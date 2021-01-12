@@ -1,3 +1,5 @@
+//Front end code
+
 home.html
 
 <html>
@@ -12,8 +14,9 @@ home.html
 </body>
 </html>
 
+//Backend code
 
-final.jsp
+final1.jsp
 
 <%@page import="java.sql.*"%>
 <%@page import=" java.security.*"%>
